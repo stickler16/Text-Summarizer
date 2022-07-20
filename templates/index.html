@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer 🤗 </title>
+    <link rel="shortcut icon" href="https://png.pngtree.com/templates/sm/20180619/sm_5b288fa409525.png"
+        type="image/x-icon">
+</head>
+<style>
+    *body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #04AA6D;
+        cursor: pointer;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30%;
+        background-color: rgb(223, 128, 128);
+
+    }
+
+    .inputtext {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .input_container {
+        margin: 30vh 0;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        color: antiquewhite;
+        text-decoration: underline;
+    }
+
+    .inputtext textarea {
+        height: 70vh;
+        width: 30vw;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .output textarea {
+        height: 70vh;
+        width: 30vw;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+
+    .inputButton {
+        width: 35%;
+        align-self: center;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        font-weight: 900;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .inputButton:hover {
+        background-color: red;
+        color: white;
+        text-decoration: none;
+    }
+
+    .output {
+        margin-bottom: 14vh;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        color: antiquewhite;
+        text-decoration: underline;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="input_container">
+            <form action="{{ url_for('Summarize')}}" method="post">
+                <div class="inputtext">
+                    <h3>Input Text</h3>
+
+                    <textarea style="resize: none;" name="data" required="required" id="data"
+                        placeholder="Enter Your Text For Summary Creation" cols="30" rows="10"></textarea>
+                    <input type="range" min="20" max="1000" name="Max_Length" value="100">
+                    <button class="inputButton" type="reset">Clear</button>
+                    <button class="inputButton" type="submit">Summarize ✔</button>
+                </div>
+            </form>
+        </div>
+        <div class="output">
+            <h3>Summarized Text</h3>
+            <textarea name="result" id="result" cols="30" rows="10" style="resize: none;">{{result}}</textarea>
+
+        </div>
+    </div>
+</body>
+
+</html>
