@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from flask import Flask, render_template, request, url_for
 import requests
 
